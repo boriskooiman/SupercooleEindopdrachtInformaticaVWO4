@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+   <body>
+     STUDENTS
+      <table border = 1>
+         <thead>
+            <td>Name</td>
+            <td>Address>/td<
+            <td>city</td>
+            <td>Pincode</td>
+            <td>Test</td>
+         </thead>
+         
+         {% for row in rowss %}
+            <tr>
+               <td>{{row["name"]}}</td>
+               <td>{{row["addr"]}}</td>
+               <td> {{ row["city"]}}</td>
+               <td>{{row['pin']}}</td>	
+               <td>{{row['test']}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+<br>
+     NEWTABLE
+      <table border = 1>
+         <thead>
+            <td>Int</td>
+            <td>Float</td>
+            <td>Text</td>
+         </thead>
+         
+         {% for row in rowsn %}
+            <tr>
+               <td>{{row['int']}}</td>	
+               <td>{{row['float']}}</td>	
+               <td>{{row['text']}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+      
+      <a href = "/">Go back to home page</a>
+   </body>
+</html>
