@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import sqlite3 as sql
 app = Flask(__name__)
+import requests
+import json
 
 conn = sql.connect('database.db')
 print("Opened database successfully")
@@ -59,5 +61,25 @@ def list():
 
    return render_template("list.html",rowss = rowsStudents, rowsn = rowsNewtable)
 
+@app.route('/test')
+def TEST():
+  # maak een verzoek aan de webservice om de data
+  response_API = requests.post ('https://po-meten.arhc.informatica.gsf.nl/4-logs-api.php', data = {"req":"getall"})
+
+  # De reactie van de webservice bevat text. 
+  data = response_API.text
+
+  # Toon de data in de console
+  print ("data:", data)
+
+  # Data is vastgelegd in de datastructuur JSON
+  parse_json = json.loads(data)
+
+  print("JSONFILE:")
+  print(data)
+  print("END")
+  return render_template("testDB.html", jsonFile = parse_json) 
+  
+  
 if __name__ == '__main__':
    app.run(debug = True, host = '0.0.0.0', port = 81)

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+   <body>
+     DATA
+      <table border = 1>
+         <thead>
+            <td>Name</td>
+            <td>Value</td>
+            <td>Created</td>
+         </thead>
+         
+         {% for row in jsonFile["more"] %}
+            <tr>
+               <td>{{row["name"]}}</td>
+               <td>{{row["value"]}}</td>
+               <td>{{row["created"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+
+      
+
+     
+      <a href = "/">Go back to home page</a>
+   </body>
+</html>
